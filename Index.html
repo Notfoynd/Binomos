@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binomo Live Signal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .background iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .container {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 300px;
+            color: #fff;
+        }
+        h1 {
+            color: red;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        .input-group {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        .input-group label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #000;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function validateLogin(event) {
+            event.preventDefault();
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            if (username === 'thearmtrader' && password === 'BUY4999') {
+                localStorage.setItem('loggedIn', 'true');
+                showMainContent();
+            } else {
+                alert('Incorrect username or password. Access denied.');
+            }
+        }
+
+        function showMainContent() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('main-container').style.display = 'block';
+        }
+
+        window.onload = function() {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                showMainContent();
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="background">
+        <iframe src="https://tenor.com/embed/2970490460583678237" allowfullscreen></iframe>
+    </div>
+    <div id="login-container" class="container">
+        <h1>Login</h1>
+        <form onsubmit="validateLogin(event)">
+            <div class="input-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="button">Login</button>
+        </form>
+    </div>
+    <div id="main-container" class="container" style="display: none;">
+        <h1>BINOMO LIVE SIGNAL</h1>
+        <div class="input-group">
+            <label for="platform">PLATFORM :</label>
+            <select id="platform">
+                <option>EUR/USD</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="min-accuracy">MIN ACCURACY :</label>
+            <select id="min-accuracy">
+                <option>90%</option>
+                <option>85%</option>
+                <option>80%</option>
+                <option>75%</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="maxi-accuracy">MAXI ACCURACY :</label>
+            <select id="maxi-accuracy">
+                <option>99%</option>
+                <option>95%</option>
+                <option>90%</option>
+                <option>85%</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="expiration-time">EXPIRATION TIME :</label>
+            <select id="expiration-time">
+                <option>1MIN</option>
+                <option>5MIN</option>
+                <option>10MIN</option>
+                <option>30MIN</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="strategy">STRATEGY :</label>
+            <select id="strategy">
+                <option>PRICE ACTION</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="no-martingales">NO. OF MARTINGALES :</label>
+            <select id="no-martingales">
+                <option>NO MARTINGALES</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="signal-type">SIGNAL TYPE :</label>
+            <select id="signal-type">
+                <option>CALL</option>
+            </select>
+        </div>
+        <button class="button">GENERATE SIGNAL</button>
+    </div>
+</body>
+</html>
